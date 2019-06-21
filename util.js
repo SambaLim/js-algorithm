@@ -4,3 +4,10 @@ var isEmptyOROne = (array) => {
     }
     return false;
 }
+
+var getSmallOne = (left, right) => {
+    if(left < right) {
+        return left;
+    }
+    return right;
+}

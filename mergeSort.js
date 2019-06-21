@@ -15,4 +15,5 @@ var mergeSort = (array) => {
 
 var merge = (leftSide, rightSide) => {
     let result = [];
+    
 }
