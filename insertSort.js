@@ -24,10 +24,3 @@ var insertionSort = (array) => {
 
     return array;
 }
-
-var isEmptyOROne = (array) => {
-    if(array.length <= 1) {
-        return true;
-    }
-    return false;
-}
