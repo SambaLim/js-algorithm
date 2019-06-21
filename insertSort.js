@@ -6,8 +6,10 @@ var insertionSort = (array) => {
     let i = 1;
     let j, temp;
 
-    // array가 비었는지 확인
-    arrayIsEmpty(array);
+    // array가 비었거나 하나만 있는 경우, 그대로 출력
+    if(isEmptyOROne(array)) {
+        return array;
+    }
 
     for(i; i<array.length; i++) {
         // 비교를 할 숫자를 선택
@@ -23,9 +25,9 @@ var insertionSort = (array) => {
     return array;
 }
 
-var arrayIsEmpty = (array) => {
-    if(array.length == 0) {
-        console.log("Empty Array", array);
-        return ;
+var isEmptyOROne = (array) => {
+    if(array.length <= 1) {
+        return true;
     }
+    return false;
 }
