@@ -11,3 +11,10 @@ var getSmallOne = (left, right) => {
     }
     return right;
 }
+
+var getBigOne = (left, right) => {
+    if(left > right) {
+        return left;
+    }
+    return right;
+}

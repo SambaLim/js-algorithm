@@ -1,7 +1,6 @@
 /*
  * 합병정렬
  */
-
 var mergeSort = (array) => {
 
     if(isEmptyOROne(array)) {
