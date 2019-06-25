@@ -9,6 +9,7 @@ var quickSort = (array) => {
     }
 
     let left = 0, right;
+    let leftArray, rightArray, result;
     let pivotIndex = array.length - 1;
     let pivot = array[pivotIndex];
     let temp;
@@ -33,11 +34,7 @@ var quickSort = (array) => {
         array = changeArrayValByIndex(array, left, right);
     }
     
-    return array;
+    return insertValInArrayWithIndex(array, left, pivot);
 
-
-}
-
-var partition = (array, pivotIndex) => {
 
 }

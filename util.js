@@ -28,6 +28,16 @@ var changeArrayValByIndex = (array, valOne, valTwo) => {
     return array;
 }
 
+var insertValInArrayWithIndex = (array, index, val) => {
+    let leftArray, rightArray;
+
+    leftArray = array.slice(0, index);
+    leftArray.push(val);
+    rightArray = array.slice(index, array.length);
+
+    return leftArray.concat(rightArray);
+}
+
 var getSmallOne = (left, right) => {
     if(left < right) {
         return left;
