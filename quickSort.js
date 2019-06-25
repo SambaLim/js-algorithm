@@ -4,7 +4,7 @@
 
 var result = [];
 
-var quickSort = (array, left, right) => {
+var quickSort = (array, left, right, pivotIndex) => {
 
     console.log(`insert Array: ${array}`);
 
@@ -13,12 +13,11 @@ var quickSort = (array, left, right) => {
         return array;
     }
 
-    let leftArray, rightArray;
     let pivotIndex = array.length - 1;
     let pivot = array[pivotIndex];
 
     if(!left) left = 0;
-    if(!right) right = pivotIndex;
+    if(!right) right = array.length - 1;
 
     while(left < right) {
         for(left; left < pivotIndex; left++) {
@@ -39,10 +38,15 @@ var quickSort = (array, left, right) => {
     }
 
     array = insertValInArrayWithIndex(array.slice(0, array.length-1), left, pivot);
+}
+
+var partition = (array) => {
+
+    let leftArray, rightArray;
 
     leftArray = array.slice(0, left);
     rightArray = array.slice(left, array.length);
 
-    quickSort(leftArray)
-    quickSort(rightArray)
+    quickSort(leftArray);
+    quickSort(rightArray);
 }
