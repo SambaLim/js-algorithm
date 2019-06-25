@@ -29,11 +29,14 @@ var changeArrayValByIndex = (array, valOne, valTwo) => {
 }
 
 var insertValInArrayWithIndex = (array, index, val) => {
+
     let leftArray, rightArray;
 
     leftArray = array.slice(0, index);
     leftArray.push(val);
     rightArray = array.slice(index, array.length);
+
+    console.log(`[insertValInArrayWithIndex] Insert ${val} into ${array} (index: ${index})`);
 
     return leftArray.concat(rightArray);
 }

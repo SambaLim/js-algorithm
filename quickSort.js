@@ -2,17 +2,20 @@
  * 퀵정렬
  */
 
+var result = [];
+
 var quickSort = (array, left, right) => {
 
     console.log(`insert Array: ${array}`);
+
     if(isEmptyOROne(array)) {
+        result.push(array[0]);
         return array;
     }
 
-    let leftArray, rightArray, result;
+    let leftArray, rightArray;
     let pivotIndex = array.length - 1;
     let pivot = array[pivotIndex];
-    let temp;
 
     if(!left) left = 0;
     if(!right) right = pivotIndex;
