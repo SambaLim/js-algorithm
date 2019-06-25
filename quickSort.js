@@ -10,10 +10,16 @@ var quickSort = (array) => {
         return array;
     }
 
+    return partition(array, pivotIndex);
+
 
 }
 
 var partition = (array, pivotIndex) => {
+
+    if(isEmptyOROne(array)) {
+        return array;
+    }
     
     // pivot
     let pivotVal = array[pivotIndex];
@@ -31,4 +37,6 @@ var partition = (array, pivotIndex) => {
         }
 
     }
+
+    return partition(leftSide, leftSide.length-1);
 }
