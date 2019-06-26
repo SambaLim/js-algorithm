@@ -1,20 +1,44 @@
 /*
  * 셸정렬
  */
-var shellSort = (array) => {
+var shellSort = (array, gap) => {
 
-    console.log(`insert Array: ${array}`);
+    console.log(`insert Array: ${array}, gap: ${gap}`);
 
     if(isEmptyOROne(array)) {
         return array;
     }
 
-    // 전체 리스트를 일정한 간격(gap)의 부분 리스트로 나누고,
+    let i,j = 0;
+    let tempArray = [];
+    let result = [];
 
-    // 나눠진 각각의 부분 리스트를 삽입정렬함
+    if(!gap) gap = 5;
 
-    // 간격을 줄임
+    for(i=0; i < gap-1; i++) {
+        // 초기화
+        j=i;
+        tempArray = [];
 
-    // 간격이 1이 될 때까지 부분 리스트의 삽입정렬 과정을 반복
+        while(j < array.length) {
+
+            tempArray.push(array[j]);
+            j += gap-1;
+    
+        }
+        result = result.concat(insertionSort(tempArray));
+    }
+    if(gap==1) {
+        result = insertionSort(array);
+    }
+
+    console.log(`result: ${result}`);
+
+    if(gap <= 1) {
+        return result;
+    } else {
+        gap = gap - 2;
+        return shellSort(result, gap);
+    }
 
 }
