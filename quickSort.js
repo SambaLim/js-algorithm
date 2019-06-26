@@ -9,15 +9,18 @@ var quickSort = (array, left, right, pivotIndex) => {
     console.log(`insert Array: ${array}`);
 
     if(isEmptyOROne(array)) {
-        result.push(array[0]);
         return array;
     }
 
-    let pivotIndex = array.length - 1;
-    let pivot = array[pivotIndex];
+    if((pivotIndex <= 0) || (right <= 0) || (left>=right) || (pivotIndex >= array.length-1)) {
+        return array;
+    }
 
     if(!left) left = 0;
-    if(!right) right = array.length - 1;
+    if(!right) right = array.length - 2;
+    if(!pivotIndex) pivotIndex = array.length - 1;
+
+    let pivot = array[pivotIndex];
 
     while(left < right) {
         for(left; left < pivotIndex; left++) {
@@ -33,20 +36,22 @@ var quickSort = (array, left, right, pivotIndex) => {
                 break;
             }
         }
-    
-        array = changeArrayValByIndex(array, left, right);
+        
+        if(!(left==right)) {            
+            array = changeArrayValByIndex(array, left, right);
+            console.log(`[changeArrayValByIndex]: ${array}`);
+        }
     }
 
-    array = insertValInArrayWithIndex(array.slice(0, array.length-1), left, pivot);
-}
+    array = insertValInArrayWithIndex(array, left, pivot);
 
-var partition = (array) => {
+    console.log(`[insertValInArrayWithIndex]: ${array}`);
 
-    let leftArray, rightArray;
+    array.splice(pivotIndex+1, 1);
 
-    leftArray = array.slice(0, left);
-    rightArray = array.slice(left, array.length);
+    console.log(`[splice]: ${array}`);
 
-    quickSort(leftArray);
-    quickSort(rightArray);
+    quickSort(array, 0, left-2, left-1);
+    quickSort(array, left+1, array.length-2, array.length-1);
+
 }
