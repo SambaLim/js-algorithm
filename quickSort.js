@@ -1,10 +1,7 @@
 /*
  * 퀵정렬
  */
-
-var result = [];
-
-var quickSort = (array, left, right, pivotIndex) => {
+var quickSort = (array, left, right) => {
 
     console.log(`insert Array: ${array}`);
 
@@ -12,46 +9,38 @@ var quickSort = (array, left, right, pivotIndex) => {
         return array;
     }
 
-    if((pivotIndex <= 0) || (right <= 0) || (left>=right) || (pivotIndex >= array.length-1)) {
-        return array;
+    if(!left) left = 0;
+    if(!right) right = array.length - 1;
+    let pivotIndex = right;
+
+    pivotIndex = partition(array, left, right-1, pivotIndex);
+
+    console.log(`After Partition: ${array}`);
+
+    if(left < pivotIndex - 1) {
+        quickSort(array, left, pivotIndex-1);
+    }
+    if(pivotIndex + 1 < right) {
+        quickSort(array, pivotIndex + 1, array.length - 1)
     }
 
-    if(!left) left = 0;
-    if(!right) right = array.length - 2;
-    if(!pivotIndex) pivotIndex = array.length - 1;
+    return array;
+}
 
+var partition = (array, left, right, pivotIndex) => {
     let pivot = array[pivotIndex];
 
-    while(left < right) {
-        for(left; left < pivotIndex; left++) {
+    while(left <= right) {
+        while(array[left] < pivot) left++;
+        while(array[right] > pivot) right--;
 
-            if(array[left] > pivot) {
-                break;
-            }
-        }
-    
-        for(right; right > left; right--) {
-    
-            if(array[right] < pivot) {
-                break;
-            }
-        }
-        
-        if(!(left==right)) {            
+        if(left <= right) {
             array = changeArrayValByIndex(array, left, right);
-            console.log(`[changeArrayValByIndex]: ${array}`);
+            left++;
+            right--;
         }
     }
 
-    array = insertValInArrayWithIndex(array, left, pivot);
-
-    console.log(`[insertValInArrayWithIndex]: ${array}`);
-
-    array.splice(pivotIndex+1, 1);
-
-    console.log(`[splice]: ${array}`);
-
-    quickSort(array, 0, left-2, left-1);
-    quickSort(array, left+1, array.length-2, array.length-1);
-
+    array = changeArrayValByIndex(array, left, pivotIndex);
+    return left;
 }
