@@ -14,7 +14,7 @@ var radixSort = (array) => {
     let i;
     let digit = 0;
 
-    for(i=0; i < array.lengh; i++) {
-        
-    }
+    // 자리수가 몇인지 알아보기
+
+    // 같은 자리수 친구들끼리 한 배열에
 }
