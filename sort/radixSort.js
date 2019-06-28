@@ -1,10 +1,9 @@
 /*
  * 기수정렬
  */
-var radixSort = (array) => {
+var radixSort = (array, digit) => {
 
     // LSD
-
     if(isEmptyOROne(array)) {
         return array;
     }
@@ -12,7 +11,7 @@ var radixSort = (array) => {
     // 자리수를 판별하기 위함
     let mod = 10;
     let i;
-    let digit = 0;
+    if(!digit) digit = 0;
 
     // 자리수가 몇인지 알아보기
 

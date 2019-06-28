@@ -35,7 +35,6 @@ var countingSort = (array ,k) => {
     }
 
     // countingArray, countingSumArray를 사용하여 결과 resultArray 만들기
-
     for(i=0; i < array.length; i++) {
         resultArray[countSumArray[array[i]] - 1] = array[i];
         countSumArray[array[i]] -= 1;
