@@ -8,7 +8,10 @@ var mLinkedList = (function(mLinkedList) {
         this.next = null;
     }
 
-    console.log(mLinkedList.prototype);
+    mLinkedList.add = function(value) {
+        let node = new Node(value);
+    }
 
+    return mLinkedList;
 
-})(window.mLinkedList);
+})(window.mLinkedList || {});
