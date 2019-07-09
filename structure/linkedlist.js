@@ -15,11 +15,19 @@ var mLinkedList = (function() {
         let current = this.head;
 
         if(!current) {
+            // 노드가 없는 경우
             this.head = node;
             this.length++;
-            return node;
+        } else {
+            // 마지막 노드를 찾음
+            while(current.next) {
+                current = current.next;
+            }
+            current.next = node;
+            this.length++;
         }
 
+        return node;
     }
 
     return mLinkedList;
