@@ -30,6 +30,12 @@ var mLinkedList = (function() {
         return node;
     }
 
+    mLinkedList.prototype.search = function(position) {
+        let current = this.head;
+        let count = 0;
+
+    }
+
     return mLinkedList;
 
 })();
